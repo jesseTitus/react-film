@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 
-class EventBind extends Component {
-  constructor(props) {
+interface EventBindProps {}
+
+interface EventBindState {
+  message: string;
+}
+
+class EventBind extends Component<EventBindProps, EventBindState> {
+  constructor(props: EventBindProps) {
     super(props);
 
     this.state = {

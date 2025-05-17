@@ -3,7 +3,7 @@ import React from "react";
 
 // a function that accepts an original component and returns a new "improved" component
 //  in this example, we encapsulate click count behavior for both the mouse click and hover counter classes
-const withCounter = (WrappedComponent) => {
+const withCounter = (WrappedComponent, incrementNumber) => {
   class NewComponent extends React.Component {
     constructor(props) {
       super(props);
@@ -16,7 +16,7 @@ const withCounter = (WrappedComponent) => {
     // method to incr count property
     incrementCount = () => {
       this.setState((prevState) => {
-        return { count: prevState.count + 1 };
+        return { count: prevState.count + incrementNumber };
       });
     };
 
@@ -25,6 +25,7 @@ const withCounter = (WrappedComponent) => {
         <WrappedComponent
           count={this.state.count}
           incrementCount={this.incrementCount}
+          {...this.props} // pass down remaining props with spread operator
         />
       );
     }

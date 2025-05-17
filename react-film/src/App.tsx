@@ -3,6 +3,7 @@ import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 import { useState } from "react";
 import Counter from "./components/Counter";
+import Counter2 from "./components/Counter2";
 import EventBind from "./components/EventBind";
 import ParentComponent from "./components/ParentComponent";
 import UserGreeting from "./components/UserGreeting";
@@ -25,6 +26,13 @@ import Hero from "./components/Hero";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ClickCounter from "./components/ClickCounter";
 import HoverCounter from "./components/HoverCounter";
+import ClickCounter2 from "./components/ClickCounter2";
+import HoverCounter2 from "./components/HoverCounter2";
+import User from "./components/User";
+import User2 from "./components/User2";
+import { UserProvider } from "./components/UserContext";
+import ComponentC from "./components/ComponentC";
+
 function App() {
   // let items = ["New York", "San fafjldkasf", "London", "Italy"];
   // const handleSelectItem = (item: string) => {
@@ -33,8 +41,24 @@ function App() {
   const [alertVisible, setAlertVisibility] = useState(false); //state hook: used to only show alert if true
   return (
     <div className="App">
-      <ClickCounter />
-      <HoverCounter />
+      {/* <Counter2>
+        {(count, incrementCount) => (
+          <ClickCounter2 count={count} incrementCount={incrementCount} />
+        )}
+      </Counter2>
+      <Counter2
+        render={(count, incrementCount) => (
+          <HoverCounter2 count={count} incrementCount={incrementCount} />
+        )}
+      /> */}
+      <UserProvider value="jesse">
+        <ComponentC />
+      </UserProvider>
+      {/* <Counter render={(count, incrementCount) => <HoverCounter2 count={count} incrementCount={incrementCount} />} /> */}
+      {/* <User name={() => "jesse"} /> */}
+      {/* <User2 render={(isLoggedIn) => (isLoggedIn ? "jesse" : "guest")} /> */}
+      {/* <ClickCounter name="jesse" />
+      <HoverCounter /> */}
       {/* <PortalDemo /> */}
       {/* <ErrorBoundary>
         <Hero heroName={"Joker"} />
